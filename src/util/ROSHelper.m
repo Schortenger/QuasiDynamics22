@@ -205,7 +205,7 @@ classdef ROSHelper < handle
 		function out = executeSimJointBuffer(obj, arm)
 			serv = rossvcclient(strcat('/robot', num2str(arm, '%d'), '_ExecuteJointPosBuffer'));
 			req = rosmessage(serv);
-			% req.Simultaneous = 1;
+			req.Simultaneous = 1;
 			out = call(serv, req);
 		end
 
