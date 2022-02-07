@@ -8,7 +8,7 @@ help.setHomeSagittal()
 disp('home')
 pause()
 
-p = load('./data/mats/sqSlide.mat').traj*500;
+p = load('./data/mats/sqSlide.mat').traj*100;
 N_l = size(p,3);
 T = size(p,4);
 
@@ -19,7 +19,7 @@ for t = 1:T-1
     end
 end
 
-if size(p,2) < 2
+if size(p,3) < 2
     help.setInitialPositionSagittal(p(1,1,1,1),p(2,1,1,1),-200,p(2,1,1,1))
 else 
     help.setInitialPositionSagittal(p(1,1,1,1),p(2,1,1,1),p(1,1,2,1),p(2,1,2,1))
@@ -40,7 +40,7 @@ pause(0.1)
 
 for t = 1:T-1
     for l = N_l:-1:1
-        help.setdXYZ(c,0,dp(1,1,l,t),dp(2,1,l,t));
+        help.setdXYZ(l,0,dp(1,1,l,t),dp(2,1,l,t));
         pause(0.1)
     end
     % pause(0.1)
