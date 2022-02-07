@@ -8,7 +8,7 @@ help.setHomeSagittal()
 disp('home')
 pause()
 
-p = load('./data/mats/sqSlide.mat').traj*10;
+p = load('./data/mats/sqSlide.mat').traj*100;
 N_l = size(p,3);
 T = size(p,4);
 
