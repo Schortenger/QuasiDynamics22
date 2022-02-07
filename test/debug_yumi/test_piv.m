@@ -9,20 +9,20 @@ disp('home')
 pause()
 
 p = load('./data/mats/sqSlide.mat').traj*500;
-N_c = size(p,2);
+N_l = size(p,3);
 T = size(p,4);
 
 dp = zeros(2,N_c,1,T);
 for t = 1:T-1
-    for c = 1:N_c
-        dp(:,c,1,t) = p(:,c,1,t+1) - p(:,c,1,t);
+    for l = 1:N_l
+        dp(:,1,l,t) = p(:,1,l,t+1) - p(:,1,l,t);
     end
 end
 
 if size(p,2) < 2
     help.setInitialPositionSagittal(p(1,1,1,1),p(2,1,1,1),-200,p(2,1,1,1))
 else 
-    help.setInitialPositionSagittal(p(1,1,1,1),p(2,1,1,1),p(1,2,1,1),p(2,2,1,1))
+    help.setInitialPositionSagittal(p(1,1,1,1),p(2,1,1,1),p(1,1,2,1),p(2,1,2,1))
 end
 
 pause()
@@ -39,8 +39,8 @@ help.adddXYZ(0,10,0,0,-10,0)
 pause(0.1)
 
 for t = 1:T-1
-    for c = N_c:-1:1
-        help.setdXYZ(c,0,dp(1,c,1,t),dp(2,c,1,t));
+    for l = N_l:-1:1
+        help.setdXYZ(c,0,dp(1,1,l,t),dp(2,1,l,t));
         pause(0.1)
     end
     % pause(0.1)
