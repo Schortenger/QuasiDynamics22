@@ -12,7 +12,7 @@ p = load('./data/mats/sqSlide.mat').traj*100;
 N_l = size(p,3);
 T = size(p,4);
 
-dp = zeros(2,N_c,1,T);
+dp = zeros(2,1,N_l,T);
 for t = 1:T-1
     for l = 1:N_l
         dp(:,1,l,t) = p(:,1,l,t+1) - p(:,1,l,t);
