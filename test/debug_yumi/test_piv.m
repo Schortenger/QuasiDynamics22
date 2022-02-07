@@ -49,8 +49,8 @@ end
 pause()
 
 for t = T-1:-1:1
-    for c = 1:N_c
-        help.setdXYZ(c,0,-dp(1,c,1,t),-dp(2,c,1,t));
+    for l = 1:N_l
+        help.setdXYZ(l,0,-dp(1,1,l,t),-dp(2,1,l,t));
         pause(0.1)
     end
     % pause(0.1)
